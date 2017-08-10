@@ -1,2 +1,2 @@
 # JS_DesignPattern
-Design pattern for javascirpt
+Javascirpts design pattern
