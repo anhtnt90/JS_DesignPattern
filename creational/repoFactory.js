@@ -1,4 +1,4 @@
-var repoFactory = function () {
+/*var repoFactory = function () {
     this.getRepo = function (repoType) {
         if(repoType === 'task') {
             var taskRepo = require('./taskRepository')();
@@ -13,6 +13,17 @@ var repoFactory = function () {
             return projectRepo;
         }
     }
-}
+}*/
+
+//v2
+var repoFactory = function() {
+    var repos = this;
+    var repoList = [{name: 'task', source:'./taskRepository'},
+                    {name: 'user', sources:'./userRepository'},
+                    {name: 'project', source:'./projectRepository'}];
+    repoList.forEach(function(repo){
+        repos[repo.name] = require(repo.source)();
+    });
+};
 
 module.exports =  repoFactory;
